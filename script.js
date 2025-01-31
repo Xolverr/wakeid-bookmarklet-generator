@@ -1,15 +1,26 @@
 // This file contains the JavaScript logic for the bookmarklet generator. 
+
+function generateBookmarklet (code){
+    var title = 'WakeID';
+    var link  = document.getElementById("bookmarklet-a");
+
+    var output = "javascript:" +  encodeURIComponent("(function(){" + cleanCode(code) +  "})();");
+    
+    link.text = title;
+    link.href = output;
+    
+  }
+
 document.addEventListener('DOMContentLoaded', () => {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const generateButton = document.getElementById('generate');
-    const outputArea = document.getElementById('output');
 
     generateButton.addEventListener('click', () => {
         const username = usernameInput.value;
         const password = passwordInput.value;
 
-        const bookmarkletCode = `javascript:(function() {
+        const bookmarkletCode = `
             var items = {
                 username: '${username}',
                 password: '${password}'
@@ -77,9 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                 }, (enableExtraDelays ? 1000 : 100));
-            }, 500);
-        })();`;
+            }, 500);`;
 
-        outputArea.href = bookmarkletCode;
+        generateBookmarklet(bookmarkletCode);
+        
     });
+    
 });
