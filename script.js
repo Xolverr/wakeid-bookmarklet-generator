@@ -9,7 +9,11 @@ function generateBookmarklet (code){
     link.text = title;
     link.href = output;
     
-  }
+}
+
+function cleanCode(code){
+    return code.trim()
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const usernameInput = document.getElementById('username');
