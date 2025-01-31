@@ -78,10 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 }, (enableExtraDelays ? 1000 : 100));
             }, 500);
-            // Your bookmarklet logic here
-            alert('Bookmarklet generated with username: ' + items.username);
         })();`;
 
-        outputArea.value = bookmarkletCode;
+        outputArea.href = bookmarkletCode;
     });
 });
